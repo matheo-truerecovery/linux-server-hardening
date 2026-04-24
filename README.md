@@ -48,13 +48,13 @@ Why: Running outdated packages means running known vulnerabilities. This is step
 Create a dedicated sudo user (never work as root)
 ```bash
 # Create new user
-adduser mateo
+adduser user
 
 # Add to sudo group
-usermod -aG sudo mateo
+usermod -aG sudo user
 
 # Verify
-groups mateo
+groups user
 # Expected output: USER : USER sudo
 ```
 Why: Root login should be disabled. All privileged operations go through a named sudo user, which creates an audit trail and reduces the blast radius of a compromise.
@@ -74,7 +74,7 @@ Why ED25519 over RSA: ED25519 is faster, shorter, and considered more secure tha
 3.2 Copy public key to server
 ```bash
 # From local machine
-ssh-copy-id -i ~/.ssh/id_ed25519.pub -p 22 mateo@YOUR-SERVER-IP
+ssh-copy-id -i ~/.ssh/id_ed25519.pub -p 22 user@YOUR-SERVER-IP
 
 # Or manually append to authorized_keys on the server
 cat ~/.ssh/id_ed25519.pub >> ~/.ssh/authorized_keys
@@ -112,7 +112,7 @@ GSSAPIAuthentication no
 LoginGraceTime 30
 
 # Allow only specific users
-AllowUsers mateo
+AllowUsers user
 ```
 Also check `/etc/ssh/sshd_config.d/` for any override files and apply the same settings there if needed.
 Restart SSH:
@@ -121,7 +121,7 @@ sudo systemctl restart sshd
 ```
 Before closing your current session, open a NEW terminal and verify you can connect on port 2222 with your key:
 ```bash
-ssh -p 2222 -i ~/.ssh/id_ed25519 mateo@YOUR-SERVER-IP
+ssh -p 2222 -i ~/.ssh/id_ed25519 muser@YOUR-SERVER-IP
 ```
 Why: Changing the port reduces automated scanning noise significantly. Disabling password auth eliminates brute force attacks entirely. Never close your existing session until you confirm the new connection works.
 ---
@@ -262,7 +262,7 @@ Services that don't need to communicate should be on separate networks. Services
 After completing all steps, verify:
 ```bash
 # SSH working on port 2222 with key
-ssh -p 2222 -i ~/.ssh/id_ed25519 mateo@YOUR-SERVER-IP
+ssh -p 2222 -i ~/.ssh/id_ed25519 muser@YOUR-SERVER-IP
 
 # UFW active with correct rules
 sudo ufw status verbose
