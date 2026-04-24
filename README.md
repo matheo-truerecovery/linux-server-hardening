@@ -55,7 +55,7 @@ usermod -aG sudo mateo
 
 # Verify
 groups mateo
-# Expected output: mateo : mateo sudo
+# Expected output: USER : USER sudo
 ```
 Why: Root login should be disabled. All privileged operations go through a named sudo user, which creates an audit trail and reduces the blast radius of a compromise.
 ---
