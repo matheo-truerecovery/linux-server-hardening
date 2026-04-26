@@ -4,9 +4,8 @@ This is not a theoretical guide. Every step documented here was applied to a rea
 ---
 Environment
 Component	Version / Detail
-OS	Ubuntu 24.04.4 LTS (Noble)
-Kernel	6.8.0-107-generic
-Server type	KVM VPS — 2 vCPU, 8 GB RAM, 100 GB SSD
+Server type KVM VPS — resources omitted for security
+SSH port Custom port (changed from default 22)
 Docker	29.04.0
 Services running	Traefik (reverse proxy), n8n (automation), PostgreSQL 15
 SSH port	2222 (changed from default 22)
