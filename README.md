@@ -15,7 +15,7 @@ Production Ubuntu 24.04 LTS hardening process applied to a live VPS running Dock
 | Services running | Traefik (reverse proxy), n8n (automation), PostgreSQL 15 |
 | SSH port | Custom port (changed from default 22) |
 
----
+
 
 ## Architecture Overview
 
@@ -470,7 +470,15 @@ sudo ss -tlnp
 - Docker Security Best Practices
 - OWASP Top 10
 
----
+## Advanced Hardening (2026)
+- Lynis hardening score: 73/100
+- Auditd with custom rules
+- AIDE file integrity monitoring
+- Kernel parameters hardening (sysctl)
+- Unnecessary protocols disabled
+- Cloudflare Access (Zero Trust) for n8n
+- SSH legal banner
+- Process accounting enabled
 
 *Maintained by M.M. | True Recovery | Paraguay*
 *Infrastructure: Self-managed Ubuntu 24.04 VPS*
