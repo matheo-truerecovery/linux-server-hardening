@@ -453,7 +453,28 @@ sudo ss -tlnp
 ---
 
 ## Work in Progress
+## Advanced Hardening Applied (May 2026)
 
+### Lynis Security Audit
+- Hardening score improved: 62 → 73/100
+- 263 security tests performed
+
+### Implemented Controls
+- Auditd with custom rules (monitors /etc/passwd, /etc/shadow, /etc/sudoers, SSH config, Docker)
+- AIDE file integrity monitoring (detects unauthorized file changes)
+- Kernel hardening via sysctl (redirects disabled, martians logged, ASLR enabled)
+- Unnecessary network protocols disabled (dccp, sctp, rds, tipc)
+- USB storage disabled
+- Core dumps disabled
+- Process accounting enabled (acct)
+- Sysstat enabled for performance monitoring
+- SSH legal banner configured (/etc/issue.net)
+- SSH additional hardening (MaxAuthTries 3, LoginGraceTime 30, compression disabled)
+- Password policy enforced (90 day expiry, complexity requirements via libpam-pwquality)
+- Fail2ban jail.local configured
+- Cloudflare Access (Zero Trust) as authentication layer before n8n
+- UFW restricted to Cloudflare IP ranges only (ports 80/443)
+- Web published on Cloudflare Pages (truesolutionsgestion.com)
 - [ ] mTLS implementation in Traefik for client certificate authentication
 - [ ] Rate limiting middleware in Traefik
 - [ ] Centralized log monitoring (Wazuh or similar)
